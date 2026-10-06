@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.innerText = "جاري إرسال الطلب...";
       }
 
-      // تجميع البيانات
+      // تجميع البيانات من النموذج
       const name = document.getElementById("name") ? document.getElementById("name").value : "";
       const phone = document.getElementById("phone") ? document.getElementById("phone").value : "";
       const wilaya = document.getElementById("wilaya") ? document.getElementById("wilaya").value : "";
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const product = document.getElementById("product") ? document.getElementById("product").value : "منتج فخار";
       const quantity = document.getElementById("quantity") ? document.getElementById("quantity").value : "1";
 
-      // تجهيز الرابط المباشر بالإحداثيات
+      // تجهيز الرابط المباشر
       const params = new URLSearchParams({
         fullName: name,
         phone: phone,
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quantity: quantity
       });
 
-      // إرسال الطلب
+      // إرسال الطلب إلى Google Sheets
       fetch(SCRIPT_URL + "?" + params.toString(), {
         method: "POST"
       })
@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
         orderForm.reset();
       })
       .catch((error) => {
-        // في Google Apps Script يتم تسجيل البيانات حتى لو أرجع المتصفح تحذير
         alert("تـم إرسال طلبك بنجاح! سنتصل بك قريبًا لتأكيد الطلبية.");
         orderForm.reset();
       })
