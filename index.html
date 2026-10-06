@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakh-Art | أصالة الفخار الجزائري</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        من روح الفخار.. لدفء مائدتك | توصيل لجميع الولايّات 🇩🇿
+    </div>
+
+    <!-- الهيدر: اللوغو الدائري والاسم -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="brand-logo">
+                <img src="logo.png" alt="Fakh-Art Logo" class="circular-logo">
+                <div class="brand-info">
+                    <span class="brand-name">Fakh-Art</span>
+                    <span class="brand-tagline">فخار يحمل دفء الدار</span>
+                </div>
+            </a>
+            <a href="#order-form" class="header-cta">اطلب الآن</a>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>شيء من الأرض.. لشيء من الذاكرة</h1>
+            <p>أواني فخارية تقليدية مصنوعة يدوياً بكل عناية، تمنح أطباقك البنة الطبيعية والأصالة الجزائرية.</p>
+            <a href="#products" class="btn-primary">اكتشف أوانينا ↙</a>
+        </div>
+    </section>
+
+    <!-- عرض المنتجات بأسلوب المتاجر السريعة -->
+    <section class="products-section" id="products">
+        <h2 class="section-title">تشكيلتنا المميزة</h2>
+        
+        <div class="products-grid">
+            
+            <!-- المنتج الأول: طاجين قطر 30 -->
+            <div class="product-card">
+                <div class="product-gallery" id="tajine-gallery">
+                    <div class="gallery-track">
+                        <div class="gallery-slide">
+                            <img src="tajine-closed.jpg" alt="طاجين فخاري قطر 30 سم" class="product-img">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="tajine-open.jpg" alt="طاجين فخاري قطر 30 سم" class="product-img">
+                        </div>
+                    </div>
+                    <span class="badge">الأكثر طلباً</span>
+                    <span class="swipe-hint">👈 اسحب لرؤية المزيد</span>
+                    <div class="gallery-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h3>طاجين فخاري (قطر 30 سم)</h3>
+                    <p class="product-desc">طاجين تقليدي متين، مثالي للطهي فوق النار مباشرة. يتسع لـ 4 إلى 6 أفراد ويحتفظ بحرارة الطعام.</p>
+                    <div class="price-tag">3,500 د.ج</div>
+                    <a href="#order-form" class="btn-order" onclick="selectSingleProduct('طاجين فخاري قطر 30 سم (3500 د.ج)')">طلب هذا المنتج</a>
+                </div>
+            </div>
+
+            <!-- المنتج الثاني: قدر 4 لتر -->
+            <div class="product-card">
+                <div class="product-gallery" id="pot-gallery">
+                    <div class="gallery-track">
+                        <div class="gallery-slide">
+                            <img src="pot-closed.jpg" alt="قدر فخاري سعة 4 لتر" class="product-img">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="pot-open.jpg" alt="قدر فخاري سعة 4 لتر" class="product-img">
+                        </div>
+                    </div>
+                    <span class="swipe-hint">👈 اسحب لرؤية المزيد</span>
+                    <div class="gallery-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h3>قدر فخاري طيني (سعة 4 لتر)</h3>
+                    <p class="product-desc">قدر عالي الجودة للشوربة والمراصين والطبخ البطيء، يمنح الأكل نكهة طينية فريدة وصحية.</p>
+                    <div class="price-tag">3,800 د.ج</div>
+                    <a href="#order-form" class="btn-order" onclick="selectSingleProduct('قدر فخاري سعة 4 لتر (3800 د.ج)')">طلب هذا المنتج</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- مميزات الفخار وطهي أوانينا -->
+    <section class="features-section">
+        <h2 class="section-title">لماذا تختار أواني Fakh-Art؟</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🔥</div>
+                <h3>مقاوم للنار والمواقد</h3>
+                <p>يمكنك الطبخ به مباشرة فوق النار بكل أمان، حيث يتحمل الحرارة العالية ويوفر توزيعاً متساوياً للطهي.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🍲</div>
+                <h3>بنة طعام طبيعية 100%</h3>
+                <p>يحافظ الطين على القيمة الغذائية للمكونات ويعطي الأطباق التقليدية نكهة وريحة زمان التي لا تُقاوم.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <h3>صحة وأصالة يدوية</h3>
+                <p>مصنوع من مواد طينية طبيعية نقية خالصة، خالية تماماً من المواد الكيميائية الضارة لسلامتك وسلامة عائلتك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- استمارة الطلب السريع -->
+    <section class="order-section" id="order-form">
+        <div class="order-card">
+            <h2>استمارة الطلب السريع</h2>
+            <p class="order-subtitle">اختر أوانيك والكمية التي تريدها وسنتصل بك فوراً لتأكيد الطلب والتوصيل</p>
+
+            <form id="fakhArtOrderForm">
+                
+                <!-- اختيار المنتج -->
+                <div class="form-group">
+                    <label for="productSelect">المنتج المطلوب *</label>
+                    <select id="productSelect" name="product" required>
+                        <option value="" disabled selected>-- اختر المنتج --</option>
+                        <option value="طاجين فخاري قطر 30 سم (3500 د.ج)">طاجين فخاري قطر 30 سم (3500 د.ج)</option>
+                        <option value="قدر فخاري سعة 4 لتر (3800 د.ج)">قدر فخاري سعة 4 لتر (3800 د.ج)</option>
+                        <option value="العرض الشامل: طاجين 30 سم + قدر 4 لتر">العرض المزدوج (طاجين 30 سم + قدر 4 لتر)</option>
+                    </select>
+                </div>
+
+                <!-- الكمية -->
+                <div class="form-group">
+                    <label for="quantity">الكمية *</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="20" value="1" required>
+                </div>
+
+                <!-- الاسم الكامل -->
+                <div class="form-group">
+                    <label for="fullName">الاسم الكامل *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="اسمك الكامل" required>
+                </div>
+
+                <!-- رقم الهاتف -->
+                <div class="form-group">
+                    <label for="phoneNumber">رقم الهاتف *</label>
+                    <input type="tel" id="phoneNumber" name="phone" placeholder="06XXXXXXXX أو 07XXXXXXXX" required>
+                </div>
+
+                <!-- الولاية -->
+                <div class="form-group">
+                    <label for="wilaya">الولاية *</label>
+                    <input type="text" id="wilaya" name="wilaya" placeholder="مثال: الجزائر، وهران، قسنطينة..." required>
+                </div>
+
+                <!-- العنوان التفصيلي -->
+                <div class="form-group">
+                    <label for="address">البلدية / العنوان *</label>
+                    <input type="text" id="address" name="address" placeholder="اسم البلدية والحي" required>
+                </div>
+
+                <!-- زر تأكيد الطلب -->
+                <button type="submit" id="submitBtn" class="submit-btn">
+                    <span id="btnText">تأكيد الطلب الآن 🚀</span>
+                </button>
+            </form>
+
+            <div id="successMessage" class="alert-success hidden">
+                ✅ تم إرسال طلبك بنجاح! سيتصل بك فريق Fakh-Art لتأكيد الطلب وتجهيز التوصيل.
+            </div>
+            
+            <div id="errorMessage" class="alert-danger hidden">
+                ❌ حدث خطأ أثناء إرسال الطلب، يرجى إعادة المحاولة.
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر ومعلومات التواصل -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Fakh-Art" class="circular-logo-sm">
+                    <h3>Fakh-Art</h3>
+                </div>
+                <p>صناعة وحرفة الفخار الجزائري بأعلى معايير الأمان والأصالة.</p>
+            </div>
+
+            <div class="footer-socials">
+                <h4>تابعنا وتواصل معنا</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/fakhart_16/" target="_blank">📸 Instagram: @fakhart_16</a>
+                    <a href="https://www.tiktok.com/@fakhart16" target="_blank">🎵 TikTok: @fakhart16</a>
+                    <a href="mailto:samyfakhart@gmail.com">✉️ Email: samyfakhart@gmail.com</a>
+                    <a href="tel:0541420166">📞 الهاتف: 0541420166</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            جميع الحقوق محفوظة &copy; 2026 Fakh-Art
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
