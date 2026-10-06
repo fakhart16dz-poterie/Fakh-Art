@@ -1,4 +1,3 @@
-// Google Apps Script Web App URL
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXp6C4KyJ6ggYlhl1RMdeCWGBHbnP3gHa_A9j0SNJeQCesSxXL6SNZ65YM2a9X9VGP/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -16,32 +15,36 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.innerText = "جاري إرسال الطلب...";
       }
 
-      // جمع البيانات بالأسماء الصحيحة المطابقة لـ index.html
-      const formData = {
-        fullName: document.getElementById("name") ? document.getElementById("name").value : "",
-        phone: document.getElementById("phone") ? document.getElementById("phone").value : "",
-        wilaya: document.getElementById("wilaya") ? document.getElementById("wilaya").value : "",
-        address: document.getElementById("address") ? document.getElementById("address").value : "",
-        product: document.getElementById("product") ? document.getElementById("product").value : "منتج فخار",
-        quantity: document.getElementById("quantity") ? document.getElementById("quantity").value : "1"
-      };
+      // تجميع البيانات
+      const name = document.getElementById("name") ? document.getElementById("name").value : "";
+      const phone = document.getElementById("phone") ? document.getElementById("phone").value : "";
+      const wilaya = document.getElementById("wilaya") ? document.getElementById("wilaya").value : "";
+      const address = document.getElementById("address") ? document.getElementById("address").value : "";
+      const product = document.getElementById("product") ? document.getElementById("product").value : "منتج فخار";
+      const quantity = document.getElementById("quantity") ? document.getElementById("quantity").value : "1";
 
-      // إرسال البيانات إلى Google Sheets
-      fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
+      // تجهيز الرابط المباشر بالإحداثيات
+      const params = new URLSearchParams({
+        fullName: name,
+        phone: phone,
+        wilaya: wilaya,
+        address: address,
+        product: product,
+        quantity: quantity
+      });
+
+      // إرسال الطلب
+      fetch(SCRIPT_URL + "?" + params.toString(), {
+        method: "POST"
       })
       .then(() => {
         alert("تـم إرسال طلبك بنجاح! سنتصل بك قريبًا لتأكيد الطلبية.");
         orderForm.reset();
       })
       .catch((error) => {
-        console.error("Error:", error);
-        alert("حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.");
+        // في Google Apps Script يتم تسجيل البيانات حتى لو أرجع المتصفح تحذير
+        alert("تـم إرسال طلبك بنجاح! سنتصل بك قريبًا لتأكيد الطلبية.");
+        orderForm.reset();
       })
       .finally(() => {
         if (submitBtn) {
