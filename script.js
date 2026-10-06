@@ -1,5 +1,5 @@
 // Google Apps Script Web App URL
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXp6C4KyJ6ggYlhl1RMdeCWGBHbnP3gHa_A9j0SnJeQCesSxXL6SNZ65YM2a9X9VGP/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXp6C4KyJ6ggYlhl1RMdeCWGBHbnP3gHa_A9j0SNJeQCesSxXL6SNZ65YM2a9X9VGP/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
   const orderForm = document.getElementById("orderForm");
@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.innerText = "جاري إرسال الطلب...";
       }
 
-      // جمع البيانات من النموذج
+      // جمع البيانات بالأسماء الصحيحة المطابقة لـ index.html
       const formData = {
-        fullName: document.getElementById("fullName") ? document.getElementById("fullName").value : "",
+        fullName: document.getElementById("name") ? document.getElementById("name").value : "",
         phone: document.getElementById("phone") ? document.getElementById("phone").value : "",
         wilaya: document.getElementById("wilaya") ? document.getElementById("wilaya").value : "",
         address: document.getElementById("address") ? document.getElementById("address").value : "",
-        product: document.getElementById("productName") ? document.getElementById("productName").value : "منتج فخار",
+        product: document.getElementById("product") ? document.getElementById("product").value : "منتج فخار",
         quantity: document.getElementById("quantity") ? document.getElementById("quantity").value : "1"
       };
 
