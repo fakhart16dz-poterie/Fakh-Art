@@ -1,90 +1,54 @@
-// ضع رابط Google Apps Script الخاص بك هنا
-const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+// Google Apps Script Web App URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXp6C4KyJ6ggYlhl1RMdeCWGBHbnP3gHa_A9j0SnJeQCesSxXL6SNZ65YM2a9X9VGP/exec";
 
-// دالة تحديد المنتج تلقائياً
-function selectSingleProduct(productName) {
-    const select = document.getElementById('productSelect');
-    for (let i = 0; i < select.options.length; i++) {
-        if (select.options[i].value === productName) {
-            select.selectedIndex = i;
-            break;
+document.addEventListener("DOMContentLoaded", function () {
+  const orderForm = document.getElementById("orderForm");
+
+  if (orderForm) {
+    orderForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const submitBtn = orderForm.querySelector("button[type='submit']");
+      const originalBtnText = submitBtn ? submitBtn.innerText : "إرسال الطلب";
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerText = "جاري إرسال الطلب...";
+      }
+
+      // جمع البيانات من النموذج
+      const formData = {
+        fullName: document.getElementById("fullName") ? document.getElementById("fullName").value : "",
+        phone: document.getElementById("phone") ? document.getElementById("phone").value : "",
+        wilaya: document.getElementById("wilaya") ? document.getElementById("wilaya").value : "",
+        address: document.getElementById("address") ? document.getElementById("address").value : "",
+        product: document.getElementById("productName") ? document.getElementById("productName").value : "منتج فخار",
+        quantity: document.getElementById("quantity") ? document.getElementById("quantity").value : "1"
+      };
+
+      // إرسال البيانات إلى Google Sheets
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(() => {
+        alert("تـم إرسال طلبك بنجاح! سنتصل بك قريبًا لتأكيد الطلبية.");
+        orderForm.reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.");
+      })
+      .finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerText = originalBtnText;
         }
-    }
-}
-
-// التحكم بالسحب وتغيير نقاط الصور
-document.querySelectorAll('.product-gallery').forEach(gallery => {
-    const track = gallery.querySelector('.gallery-track');
-    const dots = gallery.querySelectorAll('.dot');
-
-    track.addEventListener('scroll', () => {
-        const slideWidth = track.clientWidth;
-        const activeIndex = Math.round(track.scrollLeft / slideWidth);
-
-        if (track.scrollLeft > 20) {
-            gallery.classList.add('swiped');
-        }
-
-        dots.forEach((dot, index) => {
-            if (index === activeIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
+      });
     });
-});
-
-// التحكم في إرسال استمارة الطلب
-document.getElementById('fakhArtOrderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = document.getElementById('btnText');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
-
-    successMessage.classList.add('hidden');
-    errorMessage.classList.add('hidden');
-
-    const phoneInput = document.getElementById('phoneNumber').value.trim();
-    const phoneRegex = /^(05|06|07)[0-9]{8}$/;
-
-    if (!phoneRegex.test(phoneInput)) {
-        alert("يرجى إدخال رقم هاتف جزائري صحيح (05 أو 06 أو 07)");
-        return;
-    }
-
-    submitBtn.disabled = true;
-    btnText.innerText = "جاري إرسال الطلب...";
-
-    const formData = new FormData(this);
-    const payload = {
-        fullName: formData.get('fullName'),
-        phone: formData.get('phone'),
-        wilaya: formData.get('wilaya'),
-        address: formData.get('address'),
-        product: formData.get('product'),
-        quantity: formData.get('quantity'),
-        date: new Date().toLocaleString('ar-DZ')
-    };
-
-    fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-    .then(() => {
-        btnText.innerText = "تأكيد الطلب الآن 🚀";
-        submitBtn.disabled = false;
-        successMessage.classList.remove('hidden');
-        document.getElementById('fakhArtOrderForm').reset();
-    })
-    .catch(error => {
-        console.error('Error!', error);
-        btnText.innerText = "تأكيد الطلب الآن 🚀";
-        submitBtn.disabled = false;
-        errorMessage.classList.remove('hidden');
-    });
+  }
 });
